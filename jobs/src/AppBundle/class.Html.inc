@@ -11,14 +11,17 @@
 
 use Symfony\Component\DomCrawler\Crawler;
 
+
 class html {
 
 static function TravailCanada($html)
 {
     $crawler = new Crawler($html);
     $contenu_html = "";
-    $crawler = $crawler->filter('[style="border: 1px solid #CCC;padding: 0 5px"]');  //capter toutes les lignes dans le tableau des postes affiches
     
+    //capter toutes les lignes dans le tableau des postes affiches
+    $crawler = $crawler->filter('[style="border: 1px solid #CCC;padding: 0 5px"]');  
+ 
     $counter = 0;
     $handle = fopen("jobs.html", "a"); //open output file in append mode
     fwrite($handle, '<!DOCTYPE html><html><head>');
@@ -101,7 +104,7 @@ static function Jobboom()
 /*
  * Cette fonction fait ce qui suit:
  * 1. va chercher l'URL de la page intermediaire sur gouv.ca
- * 2. ouvre la page trouvee en 1. ;
+ * 2. lit la page trouvee en 1. ;
  * 3. va chercher l'URL de la page d'Emploi-Qc sur la page intermediaire
  * 4. appelle le traitement de la page d'Emploi-Quebec.
  */
@@ -121,5 +124,8 @@ static function TCrequests($domElement)
     
 fclose($handle);  //fermeture du flux fopen
 $crawler = new Crawler($html); //creation d'un objet Crawler pour faciliter le parsing de la page intermediaire
-}
+dump($crawler);
+echo 'hallo';
+
+    }
 }
