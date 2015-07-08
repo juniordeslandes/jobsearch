@@ -59,6 +59,7 @@ for ($i=0;$i<7;$i++) {
     switch ($i) 
         {
         case 0:  //travailleraucanada
+            echo 'tc';
             Html::TravailCanada($current_email->getHtml());
             break;
         case 1:  //indeed
