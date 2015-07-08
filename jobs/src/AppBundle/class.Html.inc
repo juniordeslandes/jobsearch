@@ -109,7 +109,7 @@ static function TCrequests($domElement)
 {
     $a = $domElement->firstChild;  // la balise a est la 
                                   //1re sous le 2e td d'un tr donne
-    $href = $a->getAttribute('href'); //aller chercher URL
+    $href = $a->getAttribute('href'); //aller chercher URL de la page intermédiaire
     $handle = fopen($href, "r"); //ouverture du flux
 
 }
