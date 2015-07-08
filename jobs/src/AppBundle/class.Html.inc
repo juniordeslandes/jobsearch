@@ -110,6 +110,7 @@ static function Jobboom()
  */
 static function TCrequests($domElement)
 {
+    echo 'hallo';
     $a = $domElement->firstChild;  // la balise a est la 
                                   //1re sous le 2e td d'un tr donne
     $href = $a->getAttribute('href'); //aller chercher URL de la page intermédiaire
@@ -125,7 +126,7 @@ static function TCrequests($domElement)
 fclose($handle);  //fermeture du flux fopen
 $crawler = new Crawler($html); //creation d'un objet Crawler pour faciliter le parsing de la page intermediaire
 dump($crawler);
-echo 'hallo';
+
 
     }
 }
