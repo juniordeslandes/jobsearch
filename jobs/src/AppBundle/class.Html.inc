@@ -38,6 +38,7 @@ static function TravailCanada($html)
         }
          if ($counter == 1)
         {
+             echo 'hallo';
             Html::TCrequests($domElement);
         }
         if ($counter < 2)
