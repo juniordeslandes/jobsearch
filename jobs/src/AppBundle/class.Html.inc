@@ -119,8 +119,7 @@ static function TCrequests($domElement)
     $html = '';
     while (!feof($handle)) 
     {
-        $output = fread($handle, 8192);
-        fwrite($html, $output); //ajouter a la variable html le contenu de la page intermediaire
+        $output .= fread($handle, 8192); //ajouter a la variable html le contenu de la page intermediaire 
     }
     
 fclose($handle);  //fermeture du flux fopen
