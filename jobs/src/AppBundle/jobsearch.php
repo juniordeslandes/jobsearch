@@ -56,32 +56,32 @@ for ($i=0;$i<7;$i++) {
             }
         
         
-    switch ($i) 
-        {
-        case 0:  //travailleraucanada
-            echo 'tc';
-            Html::TravailCanada($current_email->getHtml());
-            break;
-        case 1:  //indeed
-            Html::Indeed($current_email->getHtml());
-            break;
-        case 2:  //jobillico
-            Html::Jobillico($current_email->getHtml());
-            break;  
-        case 3:  //ameqenligne
-            Html::AmeqEnLigne($current_email->getHtml());
-            break;
-        case 4:  //groupe perspective
-            Html::GroupePerspective($current_email->getHtml());
-            break;
-        case 5:  //carrieres@workopolis
-            Html::Workopolis($current_email->getHtml());
-            break;
-        case 6:  //diffusion@jobboom
-            Html::Jobboom($current_email->getHtml());
-            break;
+            switch ($i) 
+                {
+                case 0:  //travailleraucanada
+                    echo 'tc';
+                    Html::TravailCanada($current_email->getHtml());
+                    break;
+                case 1:  //indeed
+                    Html::Indeed($current_email->getHtml());
+                    break;
+                case 2:  //jobillico
+                    Html::Jobillico($current_email->getHtml());
+                    break;  
+                case 3:  //ameqenligne
+                    Html::AmeqEnLigne($current_email->getHtml());
+                    break;
+                case 4:  //groupe perspective
+                    Html::GroupePerspective($current_email->getHtml());
+                    break;
+                case 5:  //carrieres@workopolis
+                    Html::Workopolis($current_email->getHtml());
+                    break;
+                case 6:  //diffusion@jobboom
+                    Html::Jobboom($current_email->getHtml());
+                    break;
+                }
         }
-    }
     }
 }
 
