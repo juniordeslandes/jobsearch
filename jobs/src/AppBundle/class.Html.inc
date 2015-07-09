@@ -38,7 +38,6 @@ static function TravailCanada($html)
         }
          if ($counter == 1)
         {
-             echo 'hallo';
             Html::TCrequests($domElement);
         }
         if ($counter < 2)
@@ -111,20 +110,20 @@ static function Jobboom()
  */
 static function TCrequests($domElement)
 {
-    echo 'hallo';
+    echo 'tcrequests';
     $a = $domElement->firstChild;  // la balise a est la 
                                   //1re sous le 2e td d'un tr donne
     $href = $a->getAttribute('href'); //aller chercher URL de la page intermédiaire
     $handle = fopen($href, "r"); //ouverture du flux
     
-    $html = '';
+    $output = '';
     while (!feof($handle)) 
     {
         $output .= fread($handle, 8192); //ajouter a la variable html le contenu de la page intermediaire 
     }
     
 fclose($handle);  //fermeture du flux fopen
-$crawler = new Crawler($html); //creation d'un objet Crawler pour faciliter le parsing de la page intermediaire
+$crawler = new Crawler($output); //creation d'un objet Crawler pour faciliter le parsing de la page intermediaire
 dump($crawler);
 
 
