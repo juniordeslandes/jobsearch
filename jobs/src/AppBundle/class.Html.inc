@@ -89,9 +89,61 @@ static function GroupePerspective()
     
 }
 
-static function Workopolis()
+static function Workopolis($html)
 {
+    //preparer le fichier html de l'output
+    $handle = fopen("jobs.html", "a"); //open output file in append mode
+    fwrite($handle, '<!DOCTYPE html><html><head>');
+    fwrite($handle, '<meta http-equiv="content-type" content="text/html;charset=utf-8" />');
+    fwrite($handle, '</head><body>');
+    
+    
+    $crawler = new Crawler($html);
+    
+    //capter toutes les balises a qui contiennent un lien vers une page d'offre d'emploi
+    $crawler = $crawler->filter('tr > td > a');
+    dump($crawler);
 
+    //looper au travers de toutes les offres dans le courriel
+    foreach ($crawler as $domElement) 
+    {
+        //aller chercher URL de la page de l'offre d'emploi
+        $href = $domElement->getAttribute('href'); 
+        dump($href);
+        
+        //ouvrir flux de lecture sur la page de l'offre d'emploi
+        $handlejobadd = fopen($href, "r");
+    
+        //jobdesc contient tout le contenu de l'offre
+        $jobdesc = '';
+        
+        //lire le contenu de la page de l'offre et
+        //placer le contenu dans $jobdesc
+        while (!feof($handlejobadd)) 
+        {
+            //ajouter a la variable output le contenu de la page d'offre 
+            $jobdesc .= fread($handlejobadd, 8192); 
+        }        
+                
+        //creer nouveau crawler pour le titre de l'offre
+        $crawler_jobtitle = new Crawler($html);
+        $crawler_jobtitle = $crawler_jobtitle->filter('h1');
+        
+        foreach ($crawler_jobtitle as $domElement) 
+        {
+            $jobtitle = trim($domElement->nodeValue);
+        }
+        
+        fwrite($handle, '<h1>' . $jobtitle . '</h1>');
+        fwrite($handle, $jobdesc);
+        fwrite($handle, '<br><br>');
+        
+    }
+     
+    //fermer le flux sur cette page d'offre
+    fclose($handle);
+//    fwrite($handle, '</body></html>');
+    
     
 }
 

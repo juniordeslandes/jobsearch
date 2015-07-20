@@ -29,7 +29,8 @@ $inbox = Connect2Gmail::inbox();
 //obtenir la date d'aujourd'hui
 $today = date("j-M-Y");
 //obtenir la source 
-$froms = array('FROM "travailleraucanada"','FROM "indeed"','FROM "jobillico"','FROM "ameqenligne"','FROM "alertesemploi-careeralerts@njoyn.com"','FROM "carrieres@workopolis.com"','FROM "diffusion@jobboom.com"');
+$froms = array('FROM "carrieres@workopolis.com"','FROM "indeed"','FROM "jobillico"','FROM "ameqenligne"','FROM "alertesemploi-careeralerts@njoyn.com"','FROM "diffusion@jobboom.com"','FROM "travailleraucanada"');  
+
 $emails_from_source = array(array());
 
 // loop through the different from email addresses to create all search strings
@@ -58,9 +59,9 @@ for ($i=0;$i<7;$i++) {
         
             switch ($i) 
                 {
-                case 0:  //travailleraucanada
+                case 0:  //Workopolis
                     echo 'tc';
-                    Html::TravailCanada($current_email->getHtml());
+                    Html::Workopolis($current_email->getHtml());
                     break;
                 case 1:  //indeed
                     Html::Indeed($current_email->getHtml());
@@ -75,10 +76,10 @@ for ($i=0;$i<7;$i++) {
                     Html::GroupePerspective($current_email->getHtml());
                     break;
                 case 5:  //carrieres@workopolis
-                    Html::Workopolis($current_email->getHtml());
+                    Html::Jobboom($current_email->getHtml());
                     break;
                 case 6:  //diffusion@jobboom
-                    Html::Jobboom($current_email->getHtml());
+                    Html::TravailCanada($current_email->getHtml());
                     break;
                 }
         }
